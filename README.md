@@ -65,7 +65,7 @@ python main.py
 ```
 ---
 
-### Or you can download the .exe file from the latest available [RELEASE](https://github.com/aleafarrel-id/)
+### Or you can download the .exe file from the latest available [RELEASE](https://github.com/aleafarrel-id/alea-aircursor/releases/)
 
 ---
 
