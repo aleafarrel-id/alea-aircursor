@@ -103,7 +103,7 @@ python main.py
 ```
 ---
 
-### Or you can download the .exe file for Windows from the latest available [RELEASE](https://github.com/aleafarrel-id/alea-aircursor/releases/)
+### Or you can download the single executable file (for Linux and .exe for Windows) from the latest available [RELEASE](https://github.com/aleafarrel-id/alea-aircursor/releases/)
 
 ---
 
