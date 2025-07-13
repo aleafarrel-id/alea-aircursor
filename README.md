@@ -39,7 +39,7 @@ This application is a testament to my passion for learning and exploring the wor
 - Python 3.12.0  
 - Pip3 (Python package installer)
 
-===
+---
 
 ### Steps (Windows)
 
@@ -92,7 +92,7 @@ pip3 uninstall opencv-contrib-python
 pip3 install opencv-python-headless==4.12.0.88 opencv-contrib-python-headless==4.12.0.88
 ```
 
-===
+---
 
 ## Usage
 
