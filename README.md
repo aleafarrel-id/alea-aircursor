@@ -12,7 +12,7 @@ This application is a testament to my passion for learning and exploring the wor
 
 - **Precise Cursor Control**: Move your cursor accurately across the screen using the position of your index finger.  
 
-- **Left Click**: Perform a left click by bringing your thumb and index finger together.
+- **Left Click**: Perform a left click by bringing your thumb and index finger together (hold for double click).
 
   <img src="pictures/left-click-gesture.png" width="400" alt="Left click gesture">
 
