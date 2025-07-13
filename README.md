@@ -2,8 +2,6 @@
 
 Experience the future of touchless interaction with **Alea-AirCursor** – transform your hand gestures into seamless computer control.
 
-<!-- Placeholder for your application's logo -->
-
 **Alea-AirCursor** is an innovative desktop application that allows you to control your mouse cursor and perform various click actions using intuitive hand gestures. Built with MediaPipe for hand tracking and PyQt5 for the graphical user interface, this project aims to provide a natural and efficient way to interact with your computer, especially in scenarios where physical mouse interaction is inconvenient or impractical.
 
 This application is a testament to my passion for learning and exploring the world of IT. While I may not have a formal background in programming, this project was developed entirely from my own ideas and source code, driven purely by the joy of creation and problem-solving.
@@ -41,7 +39,9 @@ This application is a testament to my passion for learning and exploring the wor
 - Python 3.12.0  
 - Pip3 (Python package installer)
 
-### Steps
+===
+
+### Steps (Windows)
 
 Clone the repository:
 
@@ -50,11 +50,49 @@ git clone https://github.com/aleafarrel-id/alea-aircursor.git
 cd alea-aircursor
 ````
 
+Create and activate virtual environment:
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
 Install dependencies:
 
 ```bash
 pip3 install -r requirements.txt
 ```
+
+### Steps (Linux)
+
+Clone the repository:
+
+```bash
+git clone https://github.com/aleafarrel-id/alea-aircursor.git
+cd alea-aircursor
+````
+
+Create and activate virtual environment:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip3 install -r linux-requirements.txt
+```
+
+Replace the *OpenCV* with the *OpenCV Headless* version
+
+```bash
+pip3 uninstall opencv-contrib-python
+pip3 install opencv-python-headless==4.12.0.88 opencv-contrib-python-headless==4.12.0.88
+```
+
+===
 
 ## Usage
 
@@ -65,7 +103,7 @@ python main.py
 ```
 ---
 
-### Or you can download the .exe file from the latest available [RELEASE](https://github.com/aleafarrel-id/alea-aircursor/releases/)
+### Or you can download the .exe file for Windows from the latest available [RELEASE](https://github.com/aleafarrel-id/alea-aircursor/releases/)
 
 ---
 
