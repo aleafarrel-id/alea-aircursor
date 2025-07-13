@@ -1,2 +1,82 @@
-# alea-aircursor
-Alea-AirCursor - A touchless gesture-based cursor controller powered by Python, PyQt, and MediaPipe. Lightweight, portable, and designed for vision-based interaction.
+# Alea-AirCursor
+
+Experience the future of touchless interaction with **Alea-AirCursor** – transform your hand gestures into seamless computer control.
+
+<!-- Placeholder for your application's logo -->
+
+**Alea-AirCursor** is an innovative desktop application that allows you to control your mouse cursor and perform various click actions using intuitive hand gestures. Built with MediaPipe for hand tracking and PyQt5 for the graphical user interface, this project aims to provide a natural and efficient way to interact with your computer, especially in scenarios where physical mouse interaction is inconvenient or impractical.
+
+This application is a testament to my passion for learning and exploring the world of IT. While I may not have a formal background in programming, this project was developed entirely from my own ideas and source code, driven purely by the joy of creation and problem-solving.
+
+## Features
+
+- **Precise Cursor Control**: Move your cursor accurately across the screen using the position of your index finger.  
+
+- **Left Click**: Perform a left click by bringing your thumb and index finger together.  
+  ![Left Click Gesture](pictures/left-click-gesture.png)
+
+- **Right Click**: Execute a right click with a simple gesture involving your pinky finger and wrist.  
+  ![Right Click Gesture](pictures/right-click-gesture.png)
+
+- **Click-and-Hold (Drag)**: Simulate holding down the mouse button for dragging actions using an "OK" gesture.  
+  ![Click and Hold Gesture](pictures/ok-gesture.png)
+
+- **Scrolling**: Scroll up or down effortlessly by moving your index and middle fingers together.  
+  ![Scroll Gesture](pictures/scroll-up-gesture.png)
+  ![Scroll Gesture](pictures/scroll-down-gesture.png)
+
+- **Configurable Sensitivity**: Adjust detection parameters for a personalized experience.
+
+- **System Tray Integration**: Minimize the application to the system tray for discreet background operation.
+
+- **Live Camera Feed**: Optionally display the camera feed to visualize hand tracking in real-time.
+
+## Installation
+
+### Prerequisites
+
+- Python 3.12.0  
+- Pip3 (Python package installer)
+
+### Steps
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/Alea-AirCursor.git
+cd Alea-AirCursor
+````
+
+Install dependencies:
+
+```bash
+pip3 install -r requirements.txt
+```
+
+## Usage
+
+Run the application:
+
+```bash
+python main.py
+```
+---
+
+### Or you can download the .exe file from the latest available [RELEASE](https://github.com/aleafarrel-id/)
+
+---
+
+* **Start Tracking**: Click the "Start" button to activate hand tracking. Ensure your camera is connected and accessible.
+* **Control Your Cursor**: Move your hand in front of the camera to control the mouse.
+* **Perform Gestures**: Use the documented gestures (see "Features" section above) to perform click, drag, and scroll actions.
+* **Stop Tracking**: Click the "Stop" button to cease hand tracking.
+* **Toggle Camera**: Use the "Show Camera" button to hide or show the live camera feed.
+* **Minimize to Tray**: Click "Minimize" to send the application to the system tray. Right-click the tray icon to restore or exit.
+
+## Contributing
+
+While this project was born from my personal exploration and self-taught efforts, I am open to contributions from the community. If you have suggestions for improvements, bug fixes, or new features, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
