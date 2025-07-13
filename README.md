@@ -47,7 +47,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/aleafarrel-id/alea-aircursor.git
-cd alea-airCursor
+cd alea-aircursor
 ````
 
 Install dependencies:
