@@ -13,9 +13,9 @@ class HandTracker:
                  right_hover_radius=60,
                  hold_click_radius=30, 
                  hold_hover_radius=35,
-                 scroll_radius=25,
-                 scroll_hover_radius=30,
-                 scroll_speed=100):
+                 scroll_radius=20,
+                 scroll_hover_radius=25,
+                 scroll_speed=60):
         """
         Initialize the Hand Tracker with two-zone detection system (hover and click)
         and separate parameters for right-click and click-and-hold

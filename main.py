@@ -36,9 +36,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             right_hover_radius=60,
             hold_click_radius=30,
             hold_hover_radius=35,
-            scroll_radius=25,
-            scroll_hover_radius=30,
-            scroll_speed=100
+            scroll_radius=20,
+            scroll_hover_radius=25,
+            scroll_speed=60
         )
         self.capture = None
         self.tracking_active = False
