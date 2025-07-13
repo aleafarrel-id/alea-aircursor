@@ -46,8 +46,8 @@ This application is a testament to my passion for learning and exploring the wor
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/Alea-AirCursor.git
-cd Alea-AirCursor
+git clone https://github.com/aleafarrel-id/alea-aircursor.git
+cd alea-airCursor
 ````
 
 Install dependencies:
