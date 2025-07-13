@@ -1,4 +1,4 @@
-﻿absl-py==2.3.1
+absl-py==2.3.1
 attrs==25.3.0
 cffi==1.17.1
 contourpy==1.3.2
@@ -32,6 +32,8 @@ PyRect==0.2.0
 PyScreeze==1.0.1
 pystray==0.19.5
 python-dateutil==2.9.0.post0
+python-xlib==0.33
+python3-xlib==0.15
 pytweening==1.2.0
 scipy==1.16.0
 six==1.17.0
