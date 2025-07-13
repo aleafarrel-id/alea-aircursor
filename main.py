@@ -36,8 +36,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             right_hover_radius=60,
             hold_click_radius=30,
             hold_hover_radius=35,
-            scroll_radius=20,
-            scroll_hover_radius=25,
+            scroll_radius=25,
+            scroll_hover_radius=30,
             scroll_speed=60
         )
         self.capture = None
@@ -162,7 +162,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         """Show the about dialog with application information"""
         about_text = """
         <center>
-            <h3>Alea-AirCursor v1.0.1</h3>
+            <h3>Alea-AirCursor v1.0.2</h3>
             <hr>
             <p>Experience the future of touchless interaction</p>
             <p>Transform your hand gestures to control your computer.</p>

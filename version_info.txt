@@ -4,8 +4,8 @@
 # https://learn.microsoft.com/en-us/windows/win32/menurc/vs-versioninfo
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(1, 0, 1, 0),
-    prodvers=(1, 0, 1, 0),
+    filevers=(1, 0, 2, 0),
+    prodvers=(1, 0, 2, 0),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -20,12 +20,12 @@ VSVersionInfo(
         u'040904B0',
         [StringStruct(u'CompanyName', u'Alea Farrel'),
         StringStruct(u'FileDescription', u'Alea-AirCursor - Touchless Control'),
-        StringStruct(u'FileVersion', u'1.0.1.0'),
+        StringStruct(u'FileVersion', u'1.0.2.0'),
         StringStruct(u'InternalName', u'Alea-AirCursor'),
         StringStruct(u'LegalCopyright', u'Copyright © 2025 Alea Farrel. All rights reserved'),
         StringStruct(u'OriginalFilename', u'alea-aircursor.exe'),
         StringStruct(u'ProductName', u'Alea-AirCursor'),
-        StringStruct(u'ProductVersion', u'1.0.1.0')])
+        StringStruct(u'ProductVersion', u'1.0.2.0')])
       ]), 
     VarFileInfo([VarStruct(u'Translation', [1033, 1200])])
   ]
