@@ -12,21 +12,21 @@ This application is a testament to my passion for learning and exploring the wor
 
 - **Left Click**: Perform a left click by bringing your thumb and index finger together (hold for double click).
 
-  <img src="pictures/left-click-gesture.png" width="400" alt="Left click gesture">
+  <img src="pictures/left-click-gesture.png" width="300" alt="Left click gesture">
 
 - **Right Click**: Execute a right click with a simple gesture involving your pinky finger and wrist.  
 
-  <img src="pictures/right-click-gesture.png" width="400" alt="Right click gesture">
+  <img src="pictures/right-click-gesture.png" width="300" alt="Right click gesture">
 
 - **Click-and-Hold (Drag)**: Simulate holding down the mouse button for dragging actions using an "OK" gesture.  
 
-  <img src="pictures/ok-gesture.png" width="400" alt="Click and hold gesture">
+  <img src="pictures/ok-gesture.png" width="300" alt="Click and hold gesture">
 
 - **Scrolling**: Scroll up or down effortlessly by moving your index and middle fingers together.  
 
-  <img src="pictures/scroll-up-gesture.png" width="400" alt="Scroll up gesture">
+  <img src="pictures/scroll-up-gesture.png" width="300" alt="Scroll up gesture">
 
-  <img src="pictures/scroll-down-gesture.png" width="400" alt="Scroll down gesture"> 
+  <img src="pictures/scroll-down-gesture.png" width="300" alt="Scroll down gesture"> 
 
 - **System Tray Integration**: Minimize the application to the system tray for discreet background operation.
 
