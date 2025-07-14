@@ -36,8 +36,8 @@ This application is a testament to my passion for learning and exploring the wor
 
 ### Requirements
 
-- Python 3.12.0  
-- Pip3 (Python package installer)
+![Static Badge](https://img.shields.io/badge/Python-v3.12.10-blue)
+![Static Badge](https://img.shields.io/badge/Pip3-python%20package%20manager-green)
 
 ---
 
