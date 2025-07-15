@@ -83,6 +83,12 @@ Install dependencies:
 
 To ensure you have the necessary tools for video device management, please install the **` v4l-utils `** package.
 
+Debian/Ubuntu and derivatives:
+```bash
+sudo apt update && sudo apt install v4l-utils
+```
+
+Python linux-requirements
 ```bash
 pip3 install -r linux-requirements.txt
 ```
