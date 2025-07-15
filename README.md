@@ -81,6 +81,8 @@ source venv/bin/activate
 
 Install dependencies:
 
+To ensure you have the necessary tools for video device management, please install the **` v4l-utils `** package.
+
 ```bash
 pip3 install -r linux-requirements.txt
 ```
@@ -104,6 +106,8 @@ python main.py
 ---
 
 ### Or you can download the single executable file (for Linux and .exe for Windows) from the latest available [RELEASE](https://github.com/aleafarrel-id/alea-aircursor/releases/)
+
+> ⚠️ This application is designed to run optimally with X11 (X.Org) display server. While it may function on Wayland, you might experience unexpected behavior or reduced performance.
 
 ---
 

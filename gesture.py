@@ -6,6 +6,8 @@ import time
 import platform
 import threading
 
+pyautogui.FAILSAFE = False
+
 class HandTracker:
     def __init__(self, cooldown=0.4, 
                  complexity=1, 

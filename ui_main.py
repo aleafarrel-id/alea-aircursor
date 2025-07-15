@@ -53,6 +53,34 @@ class Ui_MainWindow(object):
         
         self.verticalLayout.addLayout(self.horizontalLayout)
         
+        # Camera selection layout
+        self.cameraLayout = QtWidgets.QHBoxLayout()
+        self.cameraLayout.setObjectName("cameraLayout")
+        
+        # Combo box for camera selection
+        self.cameraComboBox = QtWidgets.QComboBox(self.centralwidget)
+        self.cameraComboBox.setMinimumSize(QtCore.QSize(600, 40))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(3)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.cameraComboBox.sizePolicy().hasHeightForWidth())
+        self.cameraComboBox.setSizePolicy(sizePolicy)
+        self.cameraComboBox.setObjectName("cameraComboBox")
+        self.cameraLayout.addWidget(self.cameraComboBox)
+        
+        # Select camera button
+        self.selectCameraButton = QtWidgets.QPushButton(self.centralwidget)
+        self.selectCameraButton.setMinimumSize(QtCore.QSize(150, 40))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.selectCameraButton.sizePolicy().hasHeightForWidth())
+        self.selectCameraButton.setSizePolicy(sizePolicy)
+        self.selectCameraButton.setObjectName("selectCameraButton")
+        self.cameraLayout.addWidget(self.selectCameraButton)
+        
+        self.verticalLayout.addLayout(self.cameraLayout)
+
         # Label for camera feed
         self.cameraFeedLabel = QtWidgets.QLabel(self.centralwidget)
         self.cameraFeedLabel.setMinimumSize(QtCore.QSize(780, 580))
@@ -88,7 +116,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Alea-AirCursor"))
         self.startButton.setText(_translate("MainWindow", "Start"))
         self.stopButton.setText(_translate("MainWindow", "Stop"))
-        self.showButton.setText(_translate("MainWindow", "Show Camera"))
+        self.showButton.setText(_translate("MainWindow", "Hide Camera"))
         self.minimizeButton.setText(_translate("MainWindow", "Minimize"))
+        self.selectCameraButton.setText(_translate("MainWindow", "Select Camera"))
         self.menuAbout.setTitle(_translate("MainWindow", "More"))
         self.actionAbout.setText(_translate("MainWindow", "About"))

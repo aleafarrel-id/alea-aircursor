@@ -7,6 +7,8 @@ from PyQt5.QtCore import QTimer, Qt
 from ui_main import Ui_MainWindow
 from gesture import HandTracker
 from tray import SystemTray
+import platform
+import subprocess
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
@@ -67,11 +69,151 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # Set initial camera display
         self.clear_camera_display("Camera ready")
 
+        # Camera selection setup
+        self.available_cameras = self.detect_available_cameras()
+        self.selected_camera_index = 0  # Default camera index
+        
+        # Connect camera selection button
+        self.selectCameraButton.clicked.connect(self.select_camera)
+        
+        # Populate camera combo box
+        self.populate_camera_combo()
+
+    def detect_available_cameras(self):
+        """
+        Detect available cameras with descriptive names
+        Returns list of tuples (index, name)
+        """
+        available = []
+        os_name = platform.system()
+        
+        # Windows: Use DirectShow to get camera names
+        if os_name == "Windows":
+            try:
+                from pygrabber.dshow_graph import FilterGraph
+                graph = FilterGraph()
+                devices = graph.get_input_devices()
+                
+                for index, name in enumerate(devices):
+                    # Try to open the camera to verify it works
+                    cap = cv2.VideoCapture(index)
+                    if cap.isOpened():
+                        available.append((index, name))
+                        cap.release()
+            except ImportError:
+                # Fallback if pygrabber is not available
+                print("pygrabber not installed, using basic camera detection")
+                for i in range(10):
+                    cap = cv2.VideoCapture(i)
+                    if cap.isOpened():
+                        available.append((i, f"Camera {i+1}"))
+                        cap.release()
+            except Exception as e:
+                print(f"Error in Windows camera detection: {e}")
+                for i in range(10):
+                    cap = cv2.VideoCapture(i)
+                    if cap.isOpened():
+                        available.append((i, f"Camera {i+1}"))
+                        cap.release()
+        
+        # Linux: Use v4l2-ctl to get camera names
+        elif os_name == "Linux":
+            try:
+                result = subprocess.run(
+                    ['v4l2-ctl', '--list-devices'],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True
+                )
+                
+                if result.returncode == 0:
+                    output = result.stdout
+                    devices = output.strip().split('\n\n')
+                    
+                    for device_block in devices:
+                        if not device_block:
+                            continue
+                            
+                        lines = device_block.split('\n')
+                        camera_name = lines[0].split('(')[0].strip()
+                        
+                        # Video device path is usually the second line
+                        for line in lines[1:]:
+                            if '/dev/video' in line:
+                                dev_path = line.strip().split()[0]
+                                index = int(dev_path.split('/dev/video')[-1])
+                                
+                                # Check if the camera can be opened
+                                cap = cv2.VideoCapture(index)
+                                if cap.isOpened():
+                                    available.append((index, camera_name))
+                                    cap.release()
+                else:
+                    # If v4l2-ctl command fails, fallback to basic detection
+                    raise Exception("v4l2-ctl command failed")
+            except Exception as e:
+                print(f"Error in Linux camera detection: {e}")
+                # Fallback to basic detection
+                for i in range(10):
+                    cap = cv2.VideoCapture(i)
+                    if cap.isOpened():
+                        available.append((i, f"Camera {i+1}"))
+                        cap.release()
+        
+        # Fallback for other OS or if above methods fail
+        if not available:
+            for i in range(10):
+                cap = cv2.VideoCapture(i)
+                if cap.isOpened():
+                    available.append((i, f"Camera {i+1}"))
+                    cap.release()
+        
+        return available
+
+    def populate_camera_combo(self):
+        """Populate the camera combo box with available cameras"""
+        self.cameraComboBox.clear()
+        
+        if not self.available_cameras:
+            self.cameraComboBox.addItem("No cameras detected", -1)
+            self.selectCameraButton.setEnabled(False)
+            return
+        
+        for idx, name in self.available_cameras:
+            self.cameraComboBox.addItem(name, idx)
+        
+        # Set default selection to first available camera
+        if self.available_cameras:
+            self.cameraComboBox.setCurrentIndex(0)
+            self.selected_camera_index = self.available_cameras[0][0]
+
+    def select_camera(self):
+        """Handle camera selection from combo box"""
+        selected_data = self.cameraComboBox.currentData()
+        
+        if selected_data == -1:
+            QtWidgets.QMessageBox.warning(
+                self, "No Camera", "No cameras available for selection"
+            )
+            return
+        
+        self.selected_camera_index = selected_data
+        self.statusbar.showMessage(f"Selected {self.cameraComboBox.currentText()}")
+
     def start_tracking(self):
         """Start the hand tracking process"""
         if not self.tracking_active:
-            self.capture = cv2.VideoCapture(0)
+             # Disable camera selection if tracking is active
+            self.cameraComboBox.setEnabled(False)
+            self.selectCameraButton.setEnabled(False)
+
+            # Use the selected camera
+            self.capture = cv2.VideoCapture(self.selected_camera_index)
             if not self.capture.isOpened():
+                # Enable camera selection if camera cannot be opened
+                self.cameraComboBox.setEnabled(True)
+                self.selectCameraButton.setEnabled(True)
+
                 QtWidgets.QMessageBox.critical(
                     self, "Error",
                     "Could not open camera. Please check your camera connection.")
@@ -98,6 +240,20 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.statusbar.showMessage("Tracking stopped.")
             self.clear_camera_display("Camera stopped.")
 
+            # Re-enable camera selection
+            self.cameraComboBox.setEnabled(True)
+            self.selectCameraButton.setEnabled(True)
+
+        # Set initial button text for showButton
+        self.update_show_button_text()
+    
+    def update_show_button_text(self):
+        """Update the show button text based on current state"""
+        if self.show_camera:
+            self.showButton.setText("Hide Camera")
+        else:
+            self.showButton.setText("Show Camera")
+
     def toggle_camera_display(self):
         """Toggle the visibility of the camera feed"""
         self.show_camera = not self.show_camera
@@ -108,6 +264,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.clear_camera_display("Camera feed hidden")
         elif not self.tracking_active:
             self.clear_camera_display("Camera ready")
+
+        self.update_show_button_text()
 
     def minimize_to_tray(self):
         """Minimize the application to the system tray"""
@@ -162,7 +320,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         """Show the about dialog with application information"""
         about_text = """
         <center>
-            <h3>Alea-AirCursor v1.0.2</h3>
+            <h3>Alea-AirCursor v1.0.3</h3>
             <hr>
             <p>Experience the future of touchless interaction</p>
             <p>Transform your hand gestures to control your computer.</p>
